@@ -1,13 +1,22 @@
 class Solution {
-    public boolean hasDuplicate(int[] nums) {
-        int n = nums.length;
-        for(int i=0; i<=n; i++){
-            for(int j=i+1; j<=n-1; j++){
-                if(nums[i]==nums[j]){
-                    return true;
-                }
-            }
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()){
+            return false;
         }
-        return false;
+
+        int[] count = new int[26];
+
+        for(int i=0; i<s.length(); i++){
+            count[s.charAt(i)-'a']++;
+            count[t.charAt(i)-'a']--;
+        }
+    for(int i=0; i<26; i++){
+         if(count[i]!=0){
+            return false;
+        }
+    }
+        return true;
+
+
     }
 }
